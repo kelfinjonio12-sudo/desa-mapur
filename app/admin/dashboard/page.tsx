@@ -5,10 +5,12 @@ import { supabase } from '@/lib/supabase';
 import { LogOut, Plus, Edit, Trash2, X, Save } from 'lucide-react';
 import ImageUploadField from '@/components/ImageUploadField';
 import ConfirmDialog from '@/components/ConfirmDialog';
+import { useToast } from '@/components/Toast';
 
 type CollectionKey = 'sejarah' | 'kepercayaan' | 'karya_seni' | 'wisata' | 'galeri' | 'profil_desa';
 
 export default function AdminDashboard() {
+  const { showToast } = useToast();
   const [activeTab, setActiveTab] = useState<CollectionKey>('sejarah');
   const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -39,7 +41,7 @@ export default function AdminDashboard() {
       }
     } catch (error) {
       console.error(error);
-      alert('Error fetching data');
+      showToast('Gagal memuat data', 'error');
     }
     setLoading(false);
   };
@@ -56,8 +58,9 @@ export default function AdminDashboard() {
       const { error } = await supabase.from(activeTab).delete().eq('id', id);
       if (error) throw error;
       fetchItems();
+      showToast('Data berhasil dihapus', 'success');
     } catch (e) {
-      alert('Gagal menghapus');
+      showToast('Gagal menghapus data', 'error');
     }
     setConfirmDeleteId(null);
   };
@@ -85,8 +88,9 @@ export default function AdminDashboard() {
       }
       setIsEditing(false);
       fetchItems();
+      showToast('Data berhasil disimpan', 'success');
     } catch (error) {
-      alert('Gagal menyimpan data');
+      showToast('Gagal menyimpan data', 'error');
       console.error(error);
     }
     setLoading(false);
