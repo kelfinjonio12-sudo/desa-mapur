@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { ToastProvider } from '@/components/Toast';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-serif' });
@@ -24,6 +25,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           </main>
           <Footer />
         </ToastProvider>
+        <Analytics />
       </body>
     </html>
   );
