@@ -1,0 +1,6 @@
+{
+  "name": "Profil Budaya Desa Mapur",
+  "description": "Profil budaya Desa Mapur, Rumah Suku Lom, suku tertua di Kepulauan Bangka Belitung.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
