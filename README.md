@@ -52,7 +52,7 @@ Follow these steps to get a development environment up and running:
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/kelfinjonio12-sudo/desa-mapur.git
+    git clone https://github.com/LuckyFIN-1415/desa-mapur.git
     cd desa-mapur
     ```
 
